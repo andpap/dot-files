@@ -1,0 +1,13 @@
+/.idea
+/.vscode
+/dist
+/tmp
+/node_modules
+
+.DS_Store
+
+*.iml
+
+*.*~
+
+/.shadow-cljs
