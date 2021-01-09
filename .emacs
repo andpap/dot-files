@@ -11,6 +11,7 @@
 (setq-default truncate-lines 1)
 (setq-default left-margin-width 1 right-margin-width 1)
 (set-window-buffer nil (current-buffer))
+(load-theme 'tsdh-light)
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
