@@ -10,15 +10,10 @@
 (setq default-tab-width 2)
 (setq-default truncate-lines 1)
 (setq-default left-margin-width 1 right-margin-width 1)
-
-(setq inhibit-startup-message t)
-
 (set-window-buffer nil (current-buffer))
-
+(setq inhibit-startup-message t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-
-(load-theme 'tsdh-light)
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
@@ -40,7 +35,7 @@
 (use-package evil-leader
   :after evil
   :ensure t
-  :config    
+  :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
@@ -80,6 +75,16 @@
   (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode))
 
+
+(add-hook 'clojure-mode-hook '(lambda ()
+  (show-paren-mode 1)
+;  (setq show-paren-style 'parenthesis)
+  (setq show-paren-style 'expression)
+  (set-face-background 'show-paren-match "#dedede")
+;  (set-face-foreground 'show-paren-match "blue")
+;  (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+  ))
+
 (use-package helm
   :ensure t
   :config
@@ -106,28 +111,15 @@
   :config
   (global-flycheck-mode))
 
-(use-package typescript-mode
-  :ensure t)
+(load-theme 'tsdh-light)
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+;(use-package typescript-mode
+;  :ensure t)
 
+;(use-package tide
+;  :ensure t
+;  :after (typescript-mode company flycheck)
+;  :hook ((typescript-mode . tide-setup)
+;         (typescript-mode . tide-hl-identifier-mode)
+;         (before-save . tide-format-before-save)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm-ag treemacs-projectile treemacs-evil treemacs tide typescript-mode flycheck company cider helm-projectile helm evil-leader evil editorconfig use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
