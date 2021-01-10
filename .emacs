@@ -10,7 +10,14 @@
 (setq default-tab-width 2)
 (setq-default truncate-lines 1)
 (setq-default left-margin-width 1 right-margin-width 1)
+
+(setq inhibit-startup-message t)
+
 (set-window-buffer nil (current-buffer))
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
 (load-theme 'tsdh-light)
 
 ;; bootstrap use-package
